@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://csca3g3j2m335"]
+[gd_scene load_steps=6 format=3 uid="uid://csca3g3j2m335"]
 
 [ext_resource type="PackedScene" uid="uid://dsrifp2imqkcr" path="res://Scenes/player.tscn" id="1_masgw"]
+[ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_prt.tscn" id="2_5kytu"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tgg3j"]
 
@@ -27,3 +28,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_76q1c")
 shape = SubResource("ConcavePolygonShape3D_007mm")
 
 [node name="Player" parent="." instance=ExtResource("1_masgw")]
+
+[node name="BloodPrt" parent="." instance=ExtResource("2_5kytu")]
