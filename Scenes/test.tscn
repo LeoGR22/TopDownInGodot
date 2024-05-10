@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://csca3g3j2m335"]
 
 [ext_resource type="PackedScene" uid="uid://dsrifp2imqkcr" path="res://Scenes/player.tscn" id="1_masgw"]
-[ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_prt.tscn" id="2_5kytu"]
-[ext_resource type="PackedScene" uid="uid://btfe6rq64g7s" path="res://Scenes/enemy.tscn" id="3_g6tv8"]
+[ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_part.tscn" id="2_5kytu"]
+[ext_resource type="PackedScene" path="res://Scenes/enemy.tscn" id="3_g6tv8"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_miguv"]
 vertices = PackedVector3Array(-9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 9.5, 0.5, -9.5)

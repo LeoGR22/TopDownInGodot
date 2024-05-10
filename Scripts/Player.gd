@@ -7,10 +7,26 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var bloodPart = "res://Effects/blood_prt.tscn"
+#rotate variables
+@onready var camera_3d = $Camera3D
+var rayOrigin = Vector3()
+var rayEnd = Vector3()
 
 
 func _physics_process(delta):
+	#Rotate
+	var spaceState = get_world_3d().direct_space_state
+	var mousePosition = get_viewport().get_mouse_position()
+	rayOrigin = camera_3d.project_ray_origin(mousePosition)
+	rayEnd = rayOrigin  + camera_3d.project_ray_normal(mousePosition) * 2000
+	var intersection = spaceState.intersect_ray(PhysicsRayQueryParameters3D.create(rayOrigin, rayEnd))
+	
+	if not intersection.is_empty():
+		var pos = intersection.position
+		$Body.look_at(Vector3(pos.x, global_position.y, pos.z), Vector3(0,1,0))
+	
+	
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
