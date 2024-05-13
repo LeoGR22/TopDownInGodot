@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dsrifp2imqkcr" path="res://Scenes/player.tscn" id="1_masgw"]
 [ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_part.tscn" id="2_5kytu"]
-[ext_resource type="PackedScene" path="res://Scenes/enemy.tscn" id="3_g6tv8"]
+[ext_resource type="PackedScene" uid="uid://chcfp22acj3m3" path="res://Scenes/enemy_spawner.tscn" id="3_07dap"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_miguv"]
 vertices = PackedVector3Array(-9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 9.5, 0.5, -9.5)
@@ -40,5 +40,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_76q1c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_007mm")
 
-[node name="Enemy" parent="NavigationRegion3D" instance=ExtResource("3_g6tv8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37751, 2.58603, 0)
+[node name="Enemy_Spawner" parent="." instance=ExtResource("3_07dap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42324, 1.04434, -6.05551)
