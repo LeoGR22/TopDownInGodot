@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dsrifp2imqkcr" path="res://Scenes/player.tscn" id="1_masgw"]
 [ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_part.tscn" id="2_5kytu"]
-[ext_resource type="PackedScene" uid="uid://chcfp22acj3m3" path="res://Scenes/enemy_spawner.tscn" id="3_07dap"]
+[ext_resource type="PackedScene" uid="uid://dlel8p1wya1ju" path="res://Scenes/enemy_spawner.tscn" id="3_07dap"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_miguv"]
 vertices = PackedVector3Array(-9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 9.5, 0.5, -9.5)

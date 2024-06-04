@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dscljuw0742ew"]
+
+[ext_resource type="MeshLibrary" uid="uid://bjga4u6603syd" path="res://Tiles/Grid.tres" id="1_mw2id"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lnvul"]
+
+[node name="Word" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_mw2id")
+cell_size = Vector3(1, 2, 1)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1, 0)
+mesh = SubResource("PlaneMesh_lnvul")
