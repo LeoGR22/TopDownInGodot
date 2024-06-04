@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://csca3g3j2m335"]
 
-[ext_resource type="PackedScene" uid="uid://dsrifp2imqkcr" path="res://Scenes/player.tscn" id="1_masgw"]
+[ext_resource type="PackedScene" uid="uid://c1n88gb2l3nul" path="res://Scenes/player.tscn" id="1_masgw"]
 [ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_part.tscn" id="2_5kytu"]
 [ext_resource type="PackedScene" uid="uid://dlel8p1wya1ju" path="res://Scenes/enemy_spawner.tscn" id="3_07dap"]
 
@@ -22,8 +22,6 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_masgw")]
-
 [node name="BloodPrt" parent="." instance=ExtResource("2_5kytu")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -42,3 +40,6 @@ shape = SubResource("ConcavePolygonShape3D_007mm")
 
 [node name="Enemy_Spawner" parent="." instance=ExtResource("3_07dap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42324, 1.04434, -6.05551)
+
+[node name="player" parent="." instance=ExtResource("1_masgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00377, 9.53674e-07, 3.18776)

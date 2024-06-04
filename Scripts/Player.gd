@@ -12,6 +12,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
 
+@onready var anim = $AnimationPlayer
+
+
 
 func _physics_process(delta):
 	#Rotate
@@ -23,7 +26,7 @@ func _physics_process(delta):
 	
 	if not intersection.is_empty():
 		var pos = intersection.position
-		$Body.look_at(Vector3(pos.x, global_position.y, pos.z), Vector3(0,1,0))
+		$Armature/Skeleton3D/Body.look_at(Vector3(pos.x, global_position.y, pos.z), Vector3(0,1,0))
 	
 	
 	
@@ -42,9 +45,11 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		anim.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		anim.play("Idle")
 
 	move_and_slide()
 
