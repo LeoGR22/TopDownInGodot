@@ -84,10 +84,10 @@ _data = {
 [node name="Gun" instance=ExtResource("1_bxc87")]
 script = ExtResource("2_hd862")
 
+[node name="Muzzle" type="Node3D" parent="blasterC" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0148008, 0.268862)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_yq7k6")
 }
-
-[node name="Muzzle" type="Node3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0148008, 0.268862)

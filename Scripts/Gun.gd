@@ -21,5 +21,5 @@ func _physics_process(delta):
 
 func shoot():
 	var new_bullet = bullet.instantiate()
-	get_parent().add_child(new_bullet)
-	new_bullet.position = $Muzzle.global_position
+	add_child(new_bullet)
+	new_bullet.global_transform.origin = $blasterC/Muzzle.global_transform.origin
