@@ -2,19 +2,17 @@
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_ixo1h"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_locc6"]
-albedo_color = Color(0.693705, 0.435881, 0.0605057, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7ptl"]
+albedo_color = Color(0.728838, 0.530896, 0.0462114, 1)
 emission_enabled = true
-emission = Color(0.739792, 0.58444, 0, 1)
-emission_energy_multiplier = 8.0
+emission = Color(0.834935, 0.639085, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_jxadn"]
-material = SubResource("StandardMaterial3D_locc6")
+[sub_resource type="BoxMesh" id="BoxMesh_dr7pw"]
+material = SubResource("StandardMaterial3D_m7ptl")
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Bullet" type="Node3D"]
-transform = Transform3D(0.641651, 0, 0, 0, 0.191208, 0, 0, 0, 0.655049, 0, 0, 0)
 script = ExtResource("1_ixo1h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.100182, 0, 0, 0, 0.308807, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_jxadn")
+mesh = SubResource("BoxMesh_dr7pw")
