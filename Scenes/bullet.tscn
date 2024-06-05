@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpgxol5c2s5kx"]
+[gd_scene load_steps=4 format=3 uid="uid://cpgxol5c2s5kx"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lvfwe"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_ixo1h"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_xfyo4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4e0ts"]
+albedo_color = Color(0.526132, 0.525771, 0, 1)
 
-[node name="Bullet" type="Area3D"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_6j561"]
+material = SubResource("StandardMaterial3D_4e0ts")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.0769785, 0, 0, 0, 0.00554914, 0.0913106, 0, -0.32341, 0.00156673, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_lvfwe")
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_ixo1h")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-mesh = SubResource("CapsuleMesh_xfyo4")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_6j561")

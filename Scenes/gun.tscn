@@ -88,3 +88,6 @@ script = ExtResource("2_hd862")
 libraries = {
 "": SubResource("AnimationLibrary_yq7k6")
 }
+
+[node name="Muzzle" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0148008, 0.268862)

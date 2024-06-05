@@ -26,7 +26,7 @@ func _physics_process(delta):
 	
 	if not intersection.is_empty():
 		var pos = intersection.position
-		$Armature/Skeleton3D/Body.look_at(Vector3(pos.x, global_position.y, pos.z), Vector3(0,1,0))
+		$Armature.look_at(Vector3(pos.x, global_position.y, pos.z), Vector3(0,1,0))
 	
 	
 	

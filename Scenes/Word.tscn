@@ -1,8 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dscljuw0742ew"]
+[gd_scene load_steps=6 format=3 uid="uid://dscljuw0742ew"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjga4u6603syd" path="res://Tiles/Grid.tres" id="1_mw2id"]
+[ext_resource type="Texture2D" uid="uid://b228sqgwaae8y" path="res://Textures/CartoonTexturePack/Rocks1_Medium.png" id="2_bl860"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ux8lj"]
+albedo_texture = ExtResource("2_bl860")
+uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lnvul"]
+material = SubResource("StandardMaterial3D_ux8lj")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ar58k"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [node name="Word" type="Node3D"]
 
@@ -14,3 +23,8 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1, 0)
 mesh = SubResource("PlaneMesh_lnvul")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ar58k")

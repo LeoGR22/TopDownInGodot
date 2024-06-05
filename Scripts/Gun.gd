@@ -3,6 +3,11 @@ extends Node3D
 @onready var anim = $AnimationPlayer
 var is_shooting : bool = false
 
+var bullet = preload("res://Scenes/bullet.tscn")
+var bullet_speed = 30
+@onready var gun = $"."
+
+
 func _physics_process(delta):
 	if Input.is_action_just_pressed("Fire"):
 		anim.play("fire")
@@ -15,4 +20,6 @@ func _physics_process(delta):
 			anim.play("idle")
 
 func shoot():
-	pass
+	var new_bullet = bullet.instantiate()
+	get_parent().add_child(new_bullet)
+	new_bullet.position = $Muzzle.global_position
