@@ -1,6 +1,5 @@
 extends Node3D
 
-
 var speed = 10
 var enemy_ref : Enemy
 
@@ -16,4 +15,8 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body is Enemy:
 		body._take_damage()
+		queue_free()
+		
+	if body is Barrel:
+		body._destroy()
 		queue_free()

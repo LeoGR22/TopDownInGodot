@@ -40,13 +40,14 @@ func _take_damage():
 	if life != 0:
 		life -= 1
 	else:
-		var blood := blood_part.instantiate() as GPUParticles3D
-		Score.score += 1
-		get_tree().current_scene.add_child(blood)
-		blood.global_position = global_position
-		blood.global_position.y += 0.5
-		blood.emitting = true
-		queue_free()
+		_death()
 		
 
-
+func _death():
+	var blood := blood_part.instantiate() as GPUParticles3D
+	Score.score += 1
+	get_tree().current_scene.add_child(blood)
+	blood.global_position = global_position
+	blood.global_position.y += 0.5
+	blood.emitting = true
+	queue_free()

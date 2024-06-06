@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://ch1jsyrm23p48"]
+
+[sub_resource type="Curve" id="Curve_xcsrc"]
+_data = [Vector2(0, 0.0138522), 0.0, 0.0, 0, 0, Vector2(0.634868, 0.837071), 0.0, 0.0, 0, 0, Vector2(0.99671, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vxh6l"]
+curve = SubResource("Curve_xcsrc")
+
+[sub_resource type="Curve" id="Curve_kv84v"]
+_data = [Vector2(0, 0.0600001), 0.0, 0.0, 0, 0, Vector2(0.238806, 1), 0.0, 0.0, 0, 0, Vector2(0.985075, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wnhcg"]
+curve = SubResource("Curve_kv84v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fgvu8"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 5, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_wnhcg")
+color = Color(0.124386, 0.123128, 0.109639, 1)
+alpha_curve = SubResource("CurveTexture_vxh6l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_piqbx"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_anvx8"]
+material = SubResource("StandardMaterial3D_piqbx")
+radial_segments = 8
+rings = 4
+
+[node name="Smoke" type="GPUParticles3D"]
+emitting = false
+amount = 12
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_fgvu8")
+draw_pass_1 = SubResource("SphereMesh_anvx8")

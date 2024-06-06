@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dscljuw0742ew"]
+[gd_scene load_steps=13 format=3 uid="uid://dscljuw0742ew"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjga4u6603syd" path="res://Tiles/Grid.tres" id="1_mw2id"]
 [ext_resource type="Script" path="res://Scripts/Word.gd" id="1_nlg5q"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1n88gb2l3nul" path="res://Scenes/player.tscn" id="3_72v15"]
 [ext_resource type="PackedScene" uid="uid://1gfr5e7wbmor" path="res://Scenes/omni_light_3d.tscn" id="4_m52b5"]
 [ext_resource type="PackedScene" uid="uid://dlel8p1wya1ju" path="res://Scenes/enemy_spawner.tscn" id="5_6wwrk"]
+[ext_resource type="PackedScene" uid="uid://u2orhxj5fm3u" path="res://Scenes/barrel.tscn" id="7_jb5a2"]
 
 [sub_resource type="Environment" id="Environment_a240q"]
 fog_enabled = true
@@ -60,7 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0475, 2.64623, -0.397526)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.501, 0.520592, 6.47543)
 
 [node name="player" parent="." instance=ExtResource("3_72v15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32727, 1, 7.78464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32727, 0.649366, 7.78464)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_agjww")
@@ -91,7 +92,16 @@ size = Vector3(2, 0.9, 2)
 [node name="Enemy_Spawner" parent="NavigationRegion3D" instance=ExtResource("5_6wwrk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51, 0)
 
-[node name="Score" type="Label" parent="."]
+[node name="Ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="Ui"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -103,3 +113,12 @@ theme_override_font_sizes/font_size = 32
 text = "Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Barrel" parent="." instance=ExtResource("7_jb5a2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56694, 0.520592, 2.09331)
+
+[node name="Barrel2" parent="." instance=ExtResource("7_jb5a2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.10469, 0.520592, -2.02713)
+
+[node name="Barrel3" parent="." instance=ExtResource("7_jb5a2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53472, 0.520593, -0.360619)
