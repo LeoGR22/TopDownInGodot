@@ -4,7 +4,7 @@ var speed = 10
 var enemy_ref : Enemy
 
 func _ready():
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(1).timeout
 	queue_free()
 
 func _physics_process(delta):

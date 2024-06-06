@@ -115,7 +115,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Barrel" parent="." instance=ExtResource("7_jb5a2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56694, 0.520592, 2.09331)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56694, 10.6909, 2.09331)
 
 [node name="Barrel2" parent="." instance=ExtResource("7_jb5a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.10469, 0.520592, -2.02713)

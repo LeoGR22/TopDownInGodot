@@ -15,7 +15,7 @@ func _process(delta):
 func _spawn_enemy():
 	var new_enemy = enemy.instantiate()
 	add_child(new_enemy)
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(Manager.timeOfSpawnEnemies).timeout
 	_spawn_enemy()
 	
 

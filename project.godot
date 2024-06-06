@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
 
-Score="*res://Scripts/Score.gd"
+Manager="*res://Scripts/Manager.gd"
 
 [input]
 
