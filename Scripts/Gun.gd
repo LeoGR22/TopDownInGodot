@@ -24,3 +24,4 @@ func shoot():
 	get_tree().current_scene.add_child(new_bullet)
 	new_bullet.global_rotation = global_rotation
 	new_bullet.global_transform.origin = $blasterC/Muzzle.global_transform.origin
+	

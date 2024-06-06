@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="TopDown3D"
-run/main_scene="res://Scenes/test.tscn"
+run/main_scene="res://Scenes/Word.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+
+[autoload]
+
+Score="*res://Scripts/Score.gd"
 
 [input]
 

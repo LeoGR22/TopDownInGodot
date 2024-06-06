@@ -17,7 +17,7 @@ sub_emitter_amount_at_collision = 1
 albedo_color = Color(0.859651, 0, 0.145288, 1)
 emission_enabled = true
 emission = Color(0.902257, 0.115084, 0, 1)
-emission_energy_multiplier = 8.0
+emission_energy_multiplier = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_7yuv7"]
 material = SubResource("StandardMaterial3D_m2ikg")
