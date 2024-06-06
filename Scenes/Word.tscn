@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dscljuw0742ew"]
+[gd_scene load_steps=12 format=3 uid="uid://dscljuw0742ew"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjga4u6603syd" path="res://Tiles/Grid.tres" id="1_mw2id"]
 [ext_resource type="Texture2D" uid="uid://b228sqgwaae8y" path="res://Textures/CartoonTexturePack/Rocks1_Medium.png" id="2_bl860"]
 [ext_resource type="PackedScene" uid="uid://c1n88gb2l3nul" path="res://Scenes/player.tscn" id="3_72v15"]
 [ext_resource type="PackedScene" uid="uid://1gfr5e7wbmor" path="res://Scenes/omni_light_3d.tscn" id="4_m52b5"]
 [ext_resource type="PackedScene" uid="uid://dlel8p1wya1ju" path="res://Scenes/enemy_spawner.tscn" id="5_6wwrk"]
+[ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_part.tscn" id="6_8tpaw"]
 
 [sub_resource type="Environment" id="Environment_a240q"]
 fog_enabled = true
@@ -82,5 +83,12 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ar58k")
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+size = Vector3(2, 0.9, 2)
+
 [node name="Enemy_Spawner" parent="NavigationRegion3D" instance=ExtResource("5_6wwrk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51, 0)
+
+[node name="BloodPrt" parent="." instance=ExtResource("6_8tpaw")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -23.2088, 2.82415, -20.1481)

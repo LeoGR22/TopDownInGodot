@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpgxol5c2s5kx"]
+[gd_scene load_steps=6 format=3 uid="uid://cpgxol5c2s5kx"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_ixo1h"]
+[ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_part.tscn" id="2_y6dhn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tffkh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7ptl"]
 albedo_color = Color(0.728838, 0.530896, 0.0462114, 1)
@@ -10,10 +13,18 @@ emission_energy_multiplier = 8.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_dr7pw"]
 material = SubResource("StandardMaterial3D_m7ptl")
-size = Vector3(0.1, 0.1, 0.1)
 
-[node name="Bullet" type="Node3D"]
+[node name="Bullet" type="Area3D"]
 script = ExtResource("1_ixo1h")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_tffkh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("BoxMesh_dr7pw")
+skeleton = NodePath("../..")
+
+[node name="BloodPrt" parent="." instance=ExtResource("2_y6dhn")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

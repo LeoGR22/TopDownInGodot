@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmc53us4t7ark"]
+[gd_scene load_steps=14 format=3 uid="uid://bmc53us4t7ark"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_eveke"]
+[ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_part.tscn" id="2_7rh45"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e76bs"]
 resource_name = "White"
@@ -318,6 +319,7 @@ height = 1.36427
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_eveke")
+blood_part = ExtResource("2_7rh45")
 
 [node name="Armature" type="Node3D" parent="."]
 
@@ -374,8 +376,10 @@ libraries = {
 "": SubResource("AnimationLibrary_iblmj")
 }
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.658371, 0)
 shape = SubResource("CapsuleShape3D_frght")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="BloodPrt" parent="." instance=ExtResource("2_7rh45")]

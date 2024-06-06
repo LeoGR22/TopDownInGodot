@@ -1,3 +1,4 @@
+class_name Enemy
 extends CharacterBody3D
 
 
@@ -8,7 +9,9 @@ var canMove = false
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var agent = $NavigationAgent3D
 @onready var anim = $AnimationPlayer
+@export var blood_part : PackedScene
 
+var life = 3
 
 var nextLocal
 var currentPos
@@ -17,6 +20,8 @@ func _ready():
 	canMove = true
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_down"):
+		_take_damage()
 	if canMove:
 		#Move
 		velocity = Vector3.ZERO
@@ -31,3 +36,20 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
+func _take_damage():
+	if life != 0:
+		life -= 1
+	else:
+		var blood := blood_part.instantiate() as GPUParticles3D
+		get_tree().current_scene.add_child(blood)
+		blood.global_position = global_position
+		blood.global_position.y += 0.5
+		blood.emitting = true
+		queue_free()
+		
+		
+		
+		
+
+
