@@ -156,6 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.642599, 0)
 shape = SubResource("CylinderShape3D_333ml")
 
 [node name="ExplosionArea" type="Area3D" parent="."]
+transform = Transform3D(1.31111, 0, 0, 0, 1.19278, 0, 0, 0, 1.10387, 0.0133028, -0.146331, 0)
 
 [node name="explosionCollision" type="CollisionShape3D" parent="ExplosionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.658252, 0)
