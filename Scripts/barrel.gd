@@ -10,6 +10,9 @@ class_name Barrel
 @onready var explosion_area = $ExplosionArea
 @onready var explosion_collision = $ExplosionArea/explosionCollision
 
+@onready var audio_stream_player_3d = $AudioStreamPlayer3D
+
+
 
 func _ready():
 	explosion_area.set_deferred("monitorable",false)
@@ -23,6 +26,7 @@ func _destroy():
 	explosion.emitting = true
 	fire.emitting = true
 	smoke.emitting = true
+	audio_stream_player_3d.play()
 	
 	explosion_area.set_deferred("monitorable", true)
 	explosion_area.set_deferred("monitoring", true)

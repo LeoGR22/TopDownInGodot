@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var score = $Ui/Score
+@onready var audio_stream_player = $AudioStreamPlayer
 
 
 func _ready():

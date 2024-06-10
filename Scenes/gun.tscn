@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1wrwq3loathi"]
+[gd_scene load_steps=10 format=3 uid="uid://d1wrwq3loathi"]
 
 [ext_resource type="PackedScene" uid="uid://rgppari7ihx4" path="res://3D/Guns/blasterC.glb" id="1_bxc87"]
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="2_hd862"]
+[ext_resource type="AudioStream" uid="uid://cnmpweeugjf5g" path="res://Sounds/SFX/GameFX_Shoot_01.wav" id="3_46ryt"]
+[ext_resource type="AudioStream" uid="uid://8v78orx7vd1g" path="res://Sounds/SFX/GameFX_Shoot_02.wav" id="4_5843r"]
+[ext_resource type="AudioStream" uid="uid://425fnufx2ake" path="res://Sounds/SFX/GameFX_Shoot_03.wav" id="5_76jl0"]
 
 [sub_resource type="Animation" id="Animation_1amp2"]
 length = 0.001
@@ -91,3 +94,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0148008, 0.268862)
 libraries = {
 "": SubResource("AnimationLibrary_yq7k6")
 }
+
+[node name="Sound1" type="AudioStreamPlayer3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.269611)
+stream = ExtResource("3_46ryt")
+volume_db = -8.0
+
+[node name="Sound2" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource("4_5843r")
+volume_db = -8.0
+
+[node name="Sound3" type="AudioStreamPlayer3D" parent="." index="4"]
+stream = ExtResource("5_76jl0")
+volume_db = -8.0

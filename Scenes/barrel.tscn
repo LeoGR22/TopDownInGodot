@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://u2orhxj5fm3u"]
+[gd_scene load_steps=15 format=3 uid="uid://u2orhxj5fm3u"]
 
 [ext_resource type="Script" path="res://Scripts/barrel.gd" id="1_s3y5l"]
 [ext_resource type="PackedScene" uid="uid://q3eaot0bjm82" path="res://Effects/explosion.tscn" id="2_qokx2"]
 [ext_resource type="PackedScene" uid="uid://dx1tga3fs4lld" path="res://Effects/fire.tscn" id="3_wtg1x"]
 [ext_resource type="PackedScene" uid="uid://ch1jsyrm23p48" path="res://Effects/smoke.tscn" id="4_l12e0"]
+[ext_resource type="AudioStream" uid="uid://bq5fm46d2mm8s" path="res://Sounds/SFX/Explosion.mp3" id="5_sqpqr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mbg0x"]
 bounce = 0.5
@@ -170,6 +171,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85138, 0)
 
 [node name="Smoke" parent="." instance=ExtResource("4_l12e0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85138, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_sqpqr")
+volume_db = -5.0
 
 [connection signal="child_entered_tree" from="CollisionShape3D" to="." method="_on_collision_shape_3d_child_entered_tree"]
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_explosion_area_body_entered"]
