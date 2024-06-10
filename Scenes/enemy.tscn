@@ -1,13 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmc53us4t7ark"]
+[gd_scene load_steps=19 format=3 uid="uid://bmc53us4t7ark"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_eveke"]
 [ext_resource type="PackedScene" uid="uid://bmbd3epjn66ei" path="res://Effects/blood_part.tscn" id="2_7rh45"]
-[ext_resource type="AudioStream" uid="uid://b2l2ukryjj87b" path="res://Sounds/SFX/splash-2-100170.mp3" id="3_7366w"]
-[ext_resource type="AudioStream" uid="uid://b7cxddcprbnro" path="res://Sounds/SFX/cartoon-scream-1-6835.mp3" id="3_mnlyj"]
-[ext_resource type="AudioStream" uid="uid://l28apar2wri7" path="res://Sounds/SFX/punch-41105.mp3" id="4_2br2v"]
-[ext_resource type="AudioStream" uid="uid://duujlbprmxfli" path="res://Sounds/SFX/punch-6-166699.mp3" id="5_n2yec"]
-[ext_resource type="AudioStream" uid="uid://d28oyuu4ynfpi" path="res://Sounds/SFX/splash-6213.mp3" id="6_qmdwc"]
-[ext_resource type="AudioStream" uid="uid://bfhse5of07qfn" path="res://Sounds/SFX/splash-3-46869.mp3" id="7_53nn5"]
+[ext_resource type="AudioStream" uid="uid://duujlbprmxfli" path="res://Sounds/SFX/punch-6-166699.mp3" id="3_qi88o"]
+[ext_resource type="AudioStream" uid="uid://l28apar2wri7" path="res://Sounds/SFX/punch-41105.mp3" id="4_wr68l"]
+[ext_resource type="AudioStream" uid="uid://b2l2ukryjj87b" path="res://Sounds/SFX/splash-2-100170.mp3" id="5_nu7j7"]
+[ext_resource type="AudioStream" uid="uid://bfhse5of07qfn" path="res://Sounds/SFX/splash-3-46869.mp3" id="6_gf68o"]
+[ext_resource type="AudioStream" uid="uid://b7cxddcprbnro" path="res://Sounds/SFX/cartoon-scream-1-6835.mp3" id="7_lix3m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e76bs"]
 resource_name = "White"
@@ -392,27 +391,28 @@ shape = SubResource("CapsuleShape3D_frght")
 
 [node name="Sounds" type="Node3D" parent="."]
 
-[node name="DeadSound" type="AudioStreamPlayer3D" parent="Sounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852839, 0)
-stream = ExtResource("3_mnlyj")
-volume_db = -18.0
-
-[node name="DamageSound1" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource("4_2br2v")
+[node name="Sound1" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("3_qi88o")
 volume_db = -12.0
 
-[node name="DamageSound2" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource("5_n2yec")
+[node name="Sound2" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("4_wr68l")
 volume_db = -12.0
 
 [node name="Splash1" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource("6_qmdwc")
+stream = ExtResource("5_nu7j7")
 volume_db = -2.0
 
 [node name="Splash2" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource("7_53nn5")
+stream = ExtResource("5_nu7j7")
 volume_db = -2.0
 
 [node name="Splash3" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource("3_7366w")
+stream = ExtResource("6_gf68o")
 volume_db = -2.0
+
+[node name="DeadSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("7_lix3m")
+volume_db = -18.0
+
+[connection signal="tree_entered" from="CollisionShape3D" to="." method="_on_collision_shape_3d_tree_entered"]

@@ -135,11 +135,20 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -103.0
-offset_right = 103.0
-offset_bottom = 111.0
+offset_right = 97.0
+offset_bottom = 110.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "Score: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLife" type="Label" parent="Ui"]
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 32
+text = "Life: "
 horizontal_alignment = 1
 vertical_alignment = 1
 

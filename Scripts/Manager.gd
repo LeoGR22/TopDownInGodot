@@ -1,5 +1,7 @@
 extends Node
 
+var player_life : int = 3
+
 var score : int = 0
 var enemySpeed : float = 1.0
 var enemiesKilleds : int = 0
