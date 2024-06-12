@@ -1,7 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dscljuw0742ew"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjga4u6603syd" path="res://Tiles/Grid.tres" id="1_mw2id"]
-[ext_resource type="Script" path="res://Scripts/Word.gd" id="1_nlg5q"]
 [ext_resource type="Texture2D" uid="uid://b228sqgwaae8y" path="res://Textures/CartoonTexturePack/Rocks1_Medium.png" id="2_bl860"]
 [ext_resource type="PackedScene" uid="uid://c1n88gb2l3nul" path="res://Scenes/player.tscn" id="3_72v15"]
 [ext_resource type="PackedScene" uid="uid://1gfr5e7wbmor" path="res://Scenes/omni_light_3d.tscn" id="4_m52b5"]
@@ -9,6 +8,25 @@
 [ext_resource type="Script" path="res://Scripts/barrel_spawner.gd" id="7_36g0s"]
 [ext_resource type="PackedScene" uid="uid://u2orhxj5fm3u" path="res://Scenes/barrel.tscn" id="7_jb5a2"]
 [ext_resource type="AudioStream" uid="uid://c1onxc7oluque" path="res://Sounds/Music/Dollys_Attack.wav" id="9_ejsoh"]
+
+[sub_resource type="GDScript" id="GDScript_dp24j"]
+script/source = "extends Node3D
+
+@onready var score = $Ui/Score
+@onready var player_life = $Ui/PlayerLife
+@onready var audio_stream_player = $AudioStreamPlayer
+
+
+func _ready():
+	pass # Replace with function body.
+
+
+func _process(delta):
+	score.text = \"Score: \" + str(Manager.score)
+	player_life.text = \"Life: \" + str(Manager.player_life)
+
+
+"
 
 [sub_resource type="Environment" id="Environment_a240q"]
 fog_enabled = true
@@ -31,7 +49,7 @@ material = SubResource("StandardMaterial3D_ux8lj")
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [node name="Word" type="Node3D"]
-script = ExtResource("1_nlg5q")
+script = SubResource("GDScript_dp24j")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a240q")

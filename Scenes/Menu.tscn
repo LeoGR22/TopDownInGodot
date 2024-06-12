@@ -1,0 +1,206 @@
+[gd_scene load_steps=14 format=3 uid="uid://mv53lj5ruqj7"]
+
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_kmnin"]
+[ext_resource type="PackedScene" uid="uid://1gfr5e7wbmor" path="res://Scenes/omni_light_3d.tscn" id="2_xv2bp"]
+[ext_resource type="MeshLibrary" uid="uid://bjga4u6603syd" path="res://Tiles/Grid.tres" id="4_5wqg6"]
+[ext_resource type="Texture2D" uid="uid://b228sqgwaae8y" path="res://Textures/CartoonTexturePack/Rocks1_Medium.png" id="5_uwwam"]
+[ext_resource type="PackedScene" uid="uid://u2orhxj5fm3u" path="res://Scenes/barrel.tscn" id="8_pu27i"]
+[ext_resource type="AudioStream" uid="uid://c1onxc7oluque" path="res://Sounds/Music/Dollys_Attack.wav" id="9_6rtw3"]
+
+[sub_resource type="Environment" id="Environment_a240q"]
+fog_enabled = true
+fog_light_color = Color(0.293646, 0.0598512, 0.309644, 1)
+fog_light_energy = 3.25
+fog_density = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ux8lj"]
+albedo_texture = ExtResource("5_uwwam")
+uv1_scale = Vector3(25, 25, 25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lnvul"]
+material = SubResource("StandardMaterial3D_ux8lj")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ar58k"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="Animation" id="Animation_lorfq"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.76974, 1.80718, -1.53932), Vector3(-2.76974, 1.80718, -1.53932)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.213384, -1.02023, -2.07608e-09), Vector3(-0.125837, -1.02935, 0.0539396)]
+}
+
+[sub_resource type="Animation" id="Animation_vddho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.76974, 1.80718, -1.53932)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.213384, -1.02023, -2.07608e-09)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vcn1t"]
+_data = {
+"RESET": SubResource("Animation_vddho"),
+"idle": SubResource("Animation_lorfq")
+}
+
+[node name="Word" type="Node3D"]
+script = ExtResource("1_kmnin")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a240q")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("4_5wqg6")
+cell_size = Vector3(1, 1, 1)
+cell_scale = 2.0
+data = {
+"cells": PackedInt32Array(65526, 65525, 8, 65528, 65525, 8, 65530, 65525, 8, 65532, 65525, 8, 65534, 65525, 8, 0, 65525, 8, 2, 65525, 8, 4, 65525, 8, 6, 65525, 8, 8, 65525, 8, 10, 65525, 8, 65524, 65525, 1048581, 12, 65525, 5, 65524, 65527, 1048584, 65524, 65529, 1048584, 65524, 65531, 1048625, 65524, 65533, 1048628, 65524, 65535, 1048628, 65524, 1, 1048631, 65524, 3, 1048630, 65524, 5, 1048631, 65524, 7, 1048628, 65524, 9, 1048628, 65524, 11, 1048626, 65526, 11, 655412, 65528, 11, 655412, 65530, 11, 655415, 12, 65527, 1441800, 65529, 65528, 1441792, 65531, 65528, 1441792, 65533, 65528, 1441792, 65529, 65533, 1441793, 65531, 65533, 1441793, 65533, 65533, 1441793, 65531, 3, 3, 65533, 3, 2, 65535, 3, 3, 65531, 6, 655363, 65533, 6, 655363, 65535, 6, 655362, 1, 6, 3, 65526, 65531, 18, 196598, 65531, 17, 12, 65529, 31, 10, 65529, 1441823, 10, 65531, 1441821, 10, 65533, 1441823, 12, 65533, 655391, 12, 65535, 1441800, 4, 6, 60, 8, 10, 655382, 131080, 10, 655381, 65526, 8, 655383, 65528, 8, 655383, 65526, 10, 15, 65528, 10, 15, 10, 5, 65, 10, 2, 65, 131065, 65533, 69, 131069, 65533, 70, 5, 1, 83, 4, 3, 83, 6, 2, 82, 0, 11, 655412, 65535, 10, 83, 65534, 11, 655414, 3, 65531, 11, 5, 65531, 12, 3, 65533, 1048653, 65527, 1, 1441866, 65528, 0, 1441865, 65526, 0, 655435, 65526, 3, 655443, 65525, 2, 655442, 3, 65529, 45, 5, 65529, 45, 7, 65531, 76, 65535, 65529, 44, 1, 65529, 43, 0, 65531, 41, 4, 10, 41, 11, 65526, 66, 10, 65522, 83, 9, 65520, 82, 6, 65519, 82, 3, 65521, 82, 5, 65521, 83, 2, 65519, 83, 0, 65522, 83, 65535, 65520, 83, 65533, 65522, 82, 65532, 65520, 82, 7, 65522, 82, 13, 65520, 67, 18, 65522, 67, 14, 65524, 66, 17, 65527, 66, 14, 65530, 67, 18, 65531, 655434, 15, 65533, 1441866, 16, 2, 1441867, 19, 0, 1441867, 16, 0, 1441865, 19, 65533, 1441865, 19, 3, 1441866, 22, 65533, 1441867, 22, 2, 1441867, 21, 65530, 1441866, 21, 6, 1441857, 18, 9, 1441860, 16, 6, 1441857, 12, 14, 1441857, 16, 13, 1441860, 8, 18, 1441858, 6, 14, 1441859, 3, 18, 1441859, 0, 15, 1441858, 3, 15, 1441866, 7, 16, 1441866, 14, 11, 1441874, 14, 9, 1441875, 0, 18, 1441874, 65534, 17, 1441874, 65530, 15, 1441874, 65531, 18, 1441875, 65533, 19, 1441875, 65524, 16, 1441860, 65527, 65520, 1441860, 65520, 65531, 1441860, 65518, 7, 1441860, 65521, 1, 1441857, 65521, 13, 1441857, 3, 65527, 36, 5, 65527, 38, 65527, 15, 71, 65521, 65525, 72, 65520, 65527, 71, 65521, 65526, 71, 65520, 65525, 71, 65522, 65524, 72, 65522, 65528, 72, 65519, 65528, 71, 65520, 65529, 71, 65519, 65526, 72, 65521, 65523, 71, 65519, 65524, 72, 65521, 6, 66, 65517, 65535, 67, 65518, 65526, 67, 65532, 16, 1441875, 65532, 11, 655414, 2, 11, 655412, 4, 11, 655412, 6, 11, 655412, 8, 11, 655412, 10, 11, 655412, 12, 11, 655410, 12, 9, 1441847, 12, 7, 1441847, 12, 5, 1441800, 12, 3, 1441800, 12, 1, 1441800, 65525, 65526, 1048636, 11, 65535, 1441852, 11, 10, 655420, 65531, 11, 655420, 131067, 65533, 655417, 65556, 65522, 655417, 10, 65528, 655417, 65526, 6, 655417)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 2.144, 0, 0, 0, 30, 0.598, 0.520592, 0)
+mesh = SubResource("PlaneMesh_lnvul")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ar58k")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+size = Vector3(2, 0.9, 2)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" parent="Lights" instance=ExtResource("2_xv2bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52553, 2.62404, 6.97768)
+
+[node name="OmniLight3D2" parent="Lights" instance=ExtResource("2_xv2bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5069, 0.520592, -7.46343)
+
+[node name="OmniLight3D3" parent="Lights" instance=ExtResource("2_xv2bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.99937, 2.38417, -9.29429)
+
+[node name="OmniLight3D4" parent="Lights" instance=ExtResource("2_xv2bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57984, 1.51177, -2.55009)
+
+[node name="OmniLight3D5" parent="Lights" instance=ExtResource("2_xv2bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4854, 2.53301, 10.042)
+
+[node name="OmniLight3D6" parent="Lights" instance=ExtResource("2_xv2bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56656, 2.38771, 11.2552)
+
+[node name="OmniLight3D7" parent="Lights" instance=ExtResource("2_xv2bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0475, 2.64623, -0.397526)
+
+[node name="OmniLight3D8" parent="Lights" instance=ExtResource("2_xv2bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.501, 0.520592, 6.47543)
+
+[node name="Barrel" parent="." instance=ExtResource("8_pu27i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77155, 0.520592, -1.27442)
+
+[node name="Barrel2" parent="." instance=ExtResource("8_pu27i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.86486, 0.520592, 5.40827)
+
+[node name="Barrel3" parent="." instance=ExtResource("8_pu27i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53472, 0.520591, 7.14235)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_6rtw3")
+volume_db = -15.0
+autoplay = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.523168, 0.180475, -0.832901, -2.02899e-09, 0.97732, 0.211768, 0.85223, -0.11079, 0.511303, -2.76974, 1.80718, -1.53932)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_vcn1t")
+}
+autoplay = "idle"
+
+[node name="Camera3D" type="Camera3D" parent="Camera3D"]
+transform = Transform3D(0.523168, 0.180475, -0.832901, -2.02899e-09, 0.97732, 0.211768, 0.85223, -0.11079, 0.511303, -2.76974, 1.80718, -1.53932)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_vcn1t")
+}
+autoplay = "idle"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 169.0
+offset_right = 1089.0
+offset_bottom = 257.0
+theme_override_font_sizes/font_size = 64
+text = "Press Enter to Start"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -101.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "Anderson Cardoso
+Freddy Matheus
+Jonatas da Costa
+Leonardo Gabriel"

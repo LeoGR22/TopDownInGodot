@@ -61,4 +61,10 @@ func _takeDamage():
 		_death()
 
 func _death():
-	pass
+	Manager._backToMenu()
+
+func _on_area_3d_body_entered(body):
+	if body is Enemy:
+		if body.death != true:
+			_takeDamage()
+		body.queue_free()

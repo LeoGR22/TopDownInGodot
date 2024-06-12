@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1n88gb2l3nul"]
+[gd_scene load_steps=16 format=3 uid="uid://c1n88gb2l3nul"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_2sb7h"]
 [ext_resource type="PackedScene" uid="uid://d1wrwq3loathi" path="res://Scenes/gun.tscn" id="2_wh70g"]
@@ -335,6 +335,12 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x5qll"]
+radius = 0.595182
+height = 2.10969
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1rncd"]
+radius = 0.47303
+height = 1.40771
 
 [node name="player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_2sb7h")
@@ -406,3 +412,12 @@ transform = Transform3D(1, 0, 0, 0, 0.609703, 0.79263, 0, -0.79263, 0.609703, 0,
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.715362, 0)
 shape = SubResource("CapsuleShape3D_x5qll")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.681637, 0)
+shape = SubResource("CapsuleShape3D_1rncd")
+
+[connection signal="tree_entered" from="CollisionShape3D" to="." method="_on_collision_shape_3d_tree_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
